@@ -41,6 +41,7 @@ parts:
     # - enable-patchelf
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
+    - -DQT_GENERATE_SBOM=OFF
     build-packages:
     - libegl-dev
     - libgl-dev
