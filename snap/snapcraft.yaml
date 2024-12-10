@@ -32,7 +32,7 @@ parts:
 
   qt6:
     source: http://code.qt.io/qt/qt5.git
-    source-branch: "v6.7.2"
+    source-branch: "v6.8.1"
     source-depth: 1
     source-submodules: [qt5compat,qtbase,qtdeclarative,qtquick3d,qtserialport,qtshadertools,qtsvg,qttools,qtwayland]
     plugin: cmake
@@ -109,7 +109,7 @@ parts:
   qtcreator:
     after: [qt6]
     source: http://code.qt.io/qt-creator/qt-creator.git
-    source-tag: v13.0.2
+    source-tag: v15.0.0
     source-depth: 1
     parse-info: [share/metainfo/org.qt-project.qtcreator.appdata.xml]
     plugin: cmake
@@ -132,7 +132,7 @@ parts:
   plugin-ros:
     after: [qtcreator]
     source: https://github.com/ros-industrial/ros_qtc_plugin.git
-    source-tag: "13.1"
+    source-tag: "15.0"
     source-depth: 1
     plugin: cmake
     cmake-generator: Ninja
@@ -149,10 +149,6 @@ parts:
       rm -r ${CRAFT_PRIME}/usr/lib/qtcreator/
       cp -r ${CRAFT_PRIME}/usr/share/qtcreator/* ${CRAFT_PRIME}/share/qtcreator/
       rm -r ${CRAFT_PRIME}/usr/share/qtcreator/
-    build-packages:
-    - libyaml-cpp-dev
-    stage-packages:
-    - libyaml-cpp0.8
 
   launchers:
     after: [qtcreator]
