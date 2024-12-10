@@ -40,7 +40,7 @@ parts:
     build-attributes:
     - enable-patchelf
     cmake-parameters:
-    - -DCMAKE_INSTALL_PREFIX=/
+    - -DCMAKE_INSTALL_PREFIX=/usr
     build-packages:
     - libegl-dev
     - libgl-dev
@@ -122,7 +122,7 @@ parts:
       cmake --install ${CRAFT_PART_BUILD}
       cmake --install ${CRAFT_PART_BUILD} --component Devel
     build-environment:
-    - LD_LIBRARY_PATH: ${CRAFT_STAGE}/lib
+    - LD_LIBRARY_PATH: ${CRAFT_STAGE}/usr/lib
     build-packages:
     - libdw-dev
     stage-packages:
@@ -139,7 +139,7 @@ parts:
     build-attributes:
     - enable-patchelf
     cmake-parameters:
-    - -DCMAKE_INSTALL_PREFIX=/
+    - -DCMAKE_INSTALL_PREFIX=/usr
     build-environment:
     - LD_LIBRARY_PATH: ${CRAFT_STAGE}/lib
     # using CMAKE_INSTALL_PREFIX=/ will install to /usr/local/ nevertheless
@@ -162,12 +162,12 @@ parts:
     plugin: nil
     override-prime: |
       shopt -s extglob
-      rm -f -v bin/!("qtcreator"|"qtcreator.sh")
-      rm -f -r {doc,etc,include}
-      rm -f -r lib/{cmake,metatypes,objects-Release,qtcreator/objects-Release}
-      rm -f lib/*.prl
-      rm -f -v libexec/!("qtcreator")
-      rm -f -r {modules,qml}
+      rm -f -v usr/bin/!("qtcreator"|"qtcreator.sh")
+      rm -f -r usr/{doc,etc,include}
+      rm -f -r usr/lib/{cmake,metatypes,objects-Release,qtcreator/objects-Release}
+      rm -f usr/lib/*.prl
+      rm -f -v usr/libexec/!("qtcreator")
+      rm -f -r usr/{modules,qml}
       rm -f -r share/qtcreator/{HACKING,LICENSE.GPL3-EXCEPT,README.md}
       rm -f -r usr/share/{doc,doc-base,drirc.d,man,pkgconfig}
       shopt -u extglob
