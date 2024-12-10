@@ -1,0 +1,28 @@
+name: snapcraft
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: snapcore/action-build@v1.3.0
+        id: build-snap
+        with:
+          snapcraft-args: "--verbose"
+
+      - run: sudo snap install --dangerous --classic ${{ steps.build-snap.outputs.snap }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qtcreator-ros-snap
+          path: ${{ steps.build-snap.outputs.snap }}
