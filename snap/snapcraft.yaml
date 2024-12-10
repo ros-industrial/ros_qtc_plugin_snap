@@ -37,8 +37,8 @@ parts:
     source-submodules: [qt5compat,qtbase,qtdeclarative,qtquick3d,qtserialport,qtshadertools,qtsvg,qttools,qtwayland]
     plugin: cmake
     cmake-generator: Ninja
-    build-attributes:
-    - enable-patchelf
+    # build-attributes:
+    # - enable-patchelf
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
     build-packages:
@@ -114,8 +114,8 @@ parts:
     parse-info: [share/metainfo/org.qt-project.qtcreator.appdata.xml]
     plugin: cmake
     cmake-generator: Ninja
-    build-attributes:
-    - enable-patchelf
+    # build-attributes:
+    # - enable-patchelf
     override-build: |
       cmake -S ${CRAFT_PART_SRC} -B ${CRAFT_PART_BUILD} -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${CRAFT_PART_INSTALL}
       cmake --build ${CRAFT_PART_BUILD}
@@ -136,8 +136,8 @@ parts:
     source-depth: 1
     plugin: cmake
     cmake-generator: Ninja
-    build-attributes:
-    - enable-patchelf
+    # build-attributes:
+    # - enable-patchelf
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
     build-environment:
